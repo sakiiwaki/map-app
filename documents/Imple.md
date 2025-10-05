@@ -7,7 +7,7 @@
 - [ ] Google Cloud プロジェクトを作成し、Maps JavaScript API / Places API を有効化。API Key を控える。
 - [ ] Supabase など PostgreSQL (PostGIS 対応) を用意し、接続文字列を確認する。
 - [ ] `.env.example` の雛形を `documents/folorders.md` を参考に作成し、`GOOGLE_MAPS_API_KEY`, `DATABASE_URL`, `NEXTAUTH_SECRET` などを記載する。
-- [ ] VS Code + ESLint/Prettier/Tailwind 用プラグインを導入。
+- [x] VS Code + ESLint/Prettier/Tailwind 用プラグインを導入。
 
 ## Stage 1 — モノレポのひな型を用意
 目的: リポジトリの骨組みを作り、TurboRepo / pnpm Workspace を設定する。
