@@ -25,6 +25,8 @@
 - [ ] `app/layout.tsx` で簡単なヘッダー/フッターを配置し、`globals.css` を読み込む。
 - [ ] `pnpm --filter web dev` が立ち上がることを確認。
 
+
+> 現時点では Next.js テンプレート生成と `src/components`, `src/features`, `src/lib` のディレクトリ作成のみで、独自コードの追加や編集はまだ行っていません。
 ## Stage 3 — 地図 UI の仮表示
 目的: Google Maps を画面に表示し、`features/map` に処理を逃がす。
 - [ ] `lib/google-maps.ts` に Maps JavaScript API を読み込むヘルパーを作成。
