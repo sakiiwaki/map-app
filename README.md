@@ -18,6 +18,11 @@ favorite-map-app は、Next.js フロントエンドと MCP サーバー／ク�
 - `packages/config` に共有の ESLint / Prettier 設定を配置済み
 - 本 README に進捗概要を記載済み
 
+### Stage 2 — Next.js ベースセットアップ
+- `apps/web` に Next.js + Tailwind + TypeScript 構成のプロジェクトを作成済み
+- `src` 配下に `app/`, `components/`, `features/`, `lib/` のディレクトリを用意済み
+- トップページやレイアウトの調整、開発サーバー起動確認はこれから
+
 最新の進捗は `documents/Imple.md` と合わせて管理してください。
 
 ## よく使うコマンド
