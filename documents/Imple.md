@@ -11,11 +11,11 @@
 
 ## Stage 1 — モノレポのひな型を用意
 目的: リポジトリの骨組みを作り、TurboRepo / pnpm Workspace を設定する。
-- [ ] `pnpm init` でルートの `package.json` を作成。
-- [ ] `pnpm dlx create-turbo@latest` などを参考に、`turbo.json` と `pnpm-workspace.yaml` をセットアップ。
-- [ ] `documents/folorders.md` に沿って `apps/web`, `apps/mcp-server`, `apps/crawler`, `packages/*`, `infra`, `scripts`, `tests` を空ディレクトリでも良いので配置。
-- [ ] ルートに ESLint/Prettier 設定を置き、`packages/config` をシンボルとして使う準備をする。
-- [ ] `README.md` に Stage 進行表を簡単に記載し、タスク管理できるようにする。
+- [x] `pnpm init` でルートの `package.json` を作成。
+- [x] `pnpm dlx create-turbo@latest` などを参考に、`turbo.json` と `pnpm-workspace.yaml` をセットアップ。
+- [x] `documents/folorders.md` に沿って `apps/web`, `apps/mcp-server`, `apps/crawler`, `packages/*`, `infra`, `scripts`, `tests` を空ディレクトリでも良いので配置。
+- [x] ルートに ESLint/Prettier 設定を置き、`packages/config` をシンボルとして使う準備をする。
+- [x] `README.md` に Stage 進行表を簡単に記載し、タスク管理できるようにする。
 
 ## Stage 2 — Next.js (apps/web) の最小ページ
 目的: App Router を理解しながらトップページを表示できるようにする。
