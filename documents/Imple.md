@@ -3,7 +3,7 @@
 初心者でも段階的に進められるよう、Next.js のハンズオン風に小さなゴールを積み重ねる手順を用意しました。`documents/folorders.md` と `documents/ark.md`、`documents/db.md`、`documents/RDD.md` の内容を参照しながら進めてください。
 
 ## Stage 0 — 開発環境の準備
-- [ ] Node.js (推奨: LTS) と pnpm をインストールする。
+- [x] Node.js (推奨: LTS) と pnpm をインストールする。
 - [ ] Google Cloud プロジェクトを作成し、Maps JavaScript API / Places API を有効化。API Key を控える。
 - [ ] Supabase など PostgreSQL (PostGIS 対応) を用意し、接続文字列を確認する。
 - [ ] `.env.example` の雛形を `documents/folorders.md` を参考に作成し、`GOOGLE_MAPS_API_KEY`, `DATABASE_URL`, `NEXTAUTH_SECRET` などを記載する。
