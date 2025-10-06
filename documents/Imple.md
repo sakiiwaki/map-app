@@ -4,9 +4,9 @@
 
 ## Stage 0 — 開発環境の準備
 - [x] Node.js (推奨: LTS) と pnpm をインストールする。
-- [ ] Google Cloud プロジェクトを作成し、Maps JavaScript API / Places API を有効化。API Key を控える。
+- [x] Google Cloud プロジェクトを作成し、Maps JavaScript API / Places API を有効化。API Key を控える。
 - [ ] Supabase など PostgreSQL (PostGIS 対応) を用意し、接続文字列を確認する。
-- [ ] `.env.example` の雛形を `documents/folorders.md` を参考に作成し、`GOOGLE_MAPS_API_KEY`, `DATABASE_URL`, `NEXTAUTH_SECRET` などを記載する。
+- [ ] `.env.example` の雛形を `documents/folorders.md` を参考に作成し、`NEXT_PUBLIC_GOOGLE_MAPS_API_KEY`, `DATABASE_URL`, `NEXTAUTH_SECRET` などを記載する。
 - [x] VS Code + ESLint/Prettier/Tailwind 用プラグインを導入。
 
 ## Stage 1 — モノレポのひな型を用意
@@ -26,7 +26,6 @@
 - [x] `pnpm --filter web dev` が立ち上がることを確認。
 
 
-> 現時点では Next.js テンプレート生成と `src/components`, `src/features`, `src/lib` のディレクトリ作成のみで、独自コードの追加や編集はまだ行っていません。
 ## Stage 3 — 地図 UI の仮表示
 目的: Google Maps を画面に表示し、`features/map` に処理を逃がす。
 - [ ] `lib/google-maps.ts` に Maps JavaScript API を読み込むヘルパーを作成。
