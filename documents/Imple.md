@@ -21,9 +21,9 @@
 目的: App Router を理解しながらトップページを表示できるようにする。
 - [x] `pnpm create next-app --example with-tailwind apps/web` のように Next.js プロジェクトを作成。
 - [x] `documents/folorders.md` の構成に合わせて `app/`, `components/`, `features/`, `lib/` を作成。
-- [ ] `app/page.tsx` に静的な “Favorite Map App” の見出しを表示する。
-- [ ] `app/layout.tsx` で簡単なヘッダー/フッターを配置し、`globals.css` を読み込む。
-- [ ] `pnpm --filter web dev` が立ち上がることを確認。
+- [x] `app/page.tsx` に静的な “Favorite Map App” の見出しを表示する。
+- [x] `app/layout.tsx` で簡単なヘッダー/フッターを配置し、`globals.css` を読み込む。
+- [x] `pnpm --filter web dev` が立ち上がることを確認。
 
 
 > 現時点では Next.js テンプレート生成と `src/components`, `src/features`, `src/lib` のディレクトリ作成のみで、独自コードの追加や編集はまだ行っていません。
