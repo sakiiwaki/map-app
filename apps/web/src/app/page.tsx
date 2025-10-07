@@ -1,4 +1,5 @@
 import Image from "next/image";
+import MapCanvas from '@/components/map/MapCanvas';
 
 export default function Home() {
   return (
@@ -7,6 +8,8 @@ export default function Home() {
       <p className="text-slate-600">
         マップ検索やフィルタ機能をこちらから開発していきます。
       </p>
+      <h1 className="text-xl font-bold mb-4">Google Map の表示</h1>
+      <MapCanvas />
     </section>
   );
 }

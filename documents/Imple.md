@@ -28,11 +28,11 @@
 
 ## Stage 3 — 地図 UI の仮表示
 目的: Google Maps を画面に表示し、`features/map` に処理を逃がす。
-- [ ] `lib/google-maps.ts` に Maps JavaScript API を読み込むヘルパーを作成。
-- [ ] `components/map/MapCanvas.tsx` を作り、`'use client'` を明記して Google Maps を初期化。
-- [ ] `features/map` に `useMapLoader` カスタムフックを置き、API Key 取得とロード状態を管理。
-- [ ] トップページで MapCanvas を配置し、地図が表示されることを確認。
-- [ ] この段階ではダミーの中心座標 (例: 東京駅) をハードコードしてOK。
+- [x] `lib/google-maps.ts` に Maps JavaScript API を読み込むヘルパーを作成。
+- [x] `components/map/MapCanvas.tsx` を作り、`'use client'` を明記して Google Maps を初期化。
+- [x] `features/map` に `useMapLoader` カスタムフックを置き、API Key 取得とロード状態を管理。
+- [x] トップページで MapCanvas を配置し、地図が表示されることを確認。
+- [x] この段階ではダミーの中心座標 (例: 東京駅) をハードコードしてOK。
 
 ## Stage 4 — 認証とルーティングの整理
 目的: `(public)` と `(authenticated)` グループを使い、ログイン UI を分離。
