@@ -1,0 +1,160 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ────────────────────────────────────────────────
+// Places & Features
+// ────────────────────────────────────────────────
+
+model Place {
+  placeId               String   @id @map("place_id")
+  name                  String
+  formattedAddress      String   @map("formatted_address")
+  lat                   Float
+  lng                   Float
+  googleRating          Float?   @map("google_rating")
+  googleUserRatingsTotal Int?    @map("google_user_ratings_total")
+  types                 String[]
+  phoneNumber           String?  @map("phone_number")
+  website               String?
+  lastGoogleSync        DateTime? @map("last_google_sync")
+  createdAt             DateTime @default(now()) @map("created_at")
+
+  features     PlaceFeature[]
+  crawlTargets CrawlTarget[]
+  favorites    Favorite[]
+
+  @@map("places")
+}
+
+model Feature {
+  featureKey  String  @id @map("feature_key")
+  displayName String  @map("display_name")
+  description String?
+  valueType   String  @map("value_type") // "boolean" | "enum" | "score"
+
+  placeFeatures PlaceFeature[]
+
+  @@map("features")
+}
+
+model PlaceFeature {
+  id           String   @id @default(uuid())
+  placeId      String   @map("place_id")
+  featureKey   String   @map("feature_key")
+  valueBoolean Boolean? @map("value_boolean")
+  valueText    String?  @map("value_text")
+  score        Float?
+  confidence   Float?
+  extractedAt  DateTime @default(now()) @map("extracted_at")
+  expiresAt    DateTime? @map("expires_at")
+  sourceSummary String? @map("source_summary")
+
+  place   Place   @relation(fields: [placeId], references: [placeId])
+  feature Feature @relation(fields: [featureKey], references: [featureKey])
+
+  @@unique([placeId, featureKey])
+  @@index([featureKey, placeId])
+  @@map("place_features")
+}
+
+// ────────────────────────────────────────────────
+// Users & Favorites
+// ────────────────────────────────────────────────
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  name      String?
+  image     String?
+  createdAt DateTime @default(now()) @map("created_at")
+
+  keywords  UserKeyword[]
+  favorites Favorite[]
+
+  @@map("users")
+}
+
+model UserKeyword {
+  id                String   @id @default(uuid())
+  userId            String   @map("user_id")
+  keyword           String
+  normalizedKeyword String   @map("normalized_keyword")
+  visibility        String   @default("private") // "private" | "shared" | "public"
+  createdAt         DateTime @default(now()) @map("created_at")
+  updatedAt         DateTime @updatedAt @map("updated_at")
+
+  user User @relation(fields: [userId], references: [id])
+
+  @@unique([userId, normalizedKeyword])
+  @@map("user_keywords")
+}
+
+model Favorite {
+  id        String   @id @default(uuid())
+  userId    String   @map("user_id")
+  placeId   String   @map("place_id")
+  note      String?
+  createdAt DateTime @default(now()) @map("created_at")
+
+  user  User  @relation(fields: [userId], references: [id])
+  place Place @relation(fields: [placeId], references: [placeId])
+
+  @@unique([userId, placeId])
+  @@map("favorites")
+}
+
+// ────────────────────────────────────────────────
+// Crawling
+// ────────────────────────────────────────────────
+
+model CrawlTarget {
+  id            String    @id @default(uuid())
+  placeId       String    @map("place_id")
+  url           String    @unique
+  sourceType    String    @map("source_type") // "official_site" | "review_site" | "sns"
+  priority      Int       @default(100)
+  lastCrawledAt DateTime? @map("last_crawled_at")
+  status        String    @default("active") // "active" | "blocked" | "error"
+  createdAt     DateTime  @default(now()) @map("created_at")
+
+  place Place      @relation(fields: [placeId], references: [placeId])
+  runs  CrawlRun[]
+
+  @@map("crawl_targets")
+}
+
+model CrawlRun {
+  id             String    @id @default(uuid())
+  crawlTargetId  String    @map("crawl_target_id")
+  status         String    // "queued" | "running" | "succeeded" | "failed"
+  startedAt      DateTime? @map("started_at")
+  finishedAt     DateTime? @map("finished_at")
+  statusMessage  String?   @map("status_message")
+
+  target   CrawlTarget    @relation(fields: [crawlTargetId], references: [id])
+  contents CrawlContent[]
+
+  @@map("crawl_runs")
+}
+
+model CrawlContent {
+  id          String   @id @default(uuid())
+  crawlRunId  String   @map("crawl_run_id")
+  contentType String   @map("content_type") // "html" | "json" | "screenshot"
+  rawContent  String?  @map("raw_content")
+  textContent String?  @map("text_content")
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  run CrawlRun @relation(fields: [crawlRunId], references: [id])
+
+  @@map("crawl_contents")
+}
